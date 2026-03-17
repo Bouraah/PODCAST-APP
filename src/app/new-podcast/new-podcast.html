@@ -1,0 +1,163 @@
+
+<header>
+  <img
+    id="logo"
+    src="assets/img/Taw Podcast.png"
+    width="100"
+    height="100"
+    alt="TAWAKKUL Logo"
+  />
+  <h1>TAWAKKUL – Für Herz & Seele</h1>
+</header>
+
+<nav class="nav">
+  <a routerLink="/podcasts">Abonnierte Podcasts</a>
+  <a routerLink="/podcast-grid">Abonnierte Podcasts (Kacheln)</a>
+  <a routerLink="/new-podcast">Podcast hinzufügen</a>
+  <a routerLink="/episode-detail">Details zur Episoden</a>
+</nav>
+
+<div id="maincontainer">
+  <main>
+    <h2>Neuen Podcast hinzufügen</h2>
+
+    <form
+      method="post"
+      action="https://edu.inf.fh-dortmund.de/podcastService/testCreatePodcast.php"
+    >
+      <fieldset>
+        <legend>Podcast-Informationen</legend>
+
+        <p>
+          <label class="required" for="pctitle">
+            Titel:
+            <input
+              type="text"
+              id="pctitle"
+              name="pctitle"
+              maxlength="100"
+              pattern="[A-Z].*"
+              placeholder="z.B. Ajras"
+              required
+            />
+          </label>
+        </p>
+
+        <p>
+          <label for="pcdescription">
+            Beschreibung:<br />
+            <textarea
+              id="pcdescription"
+              name="pcdescription"
+              maxlength="500"
+              placeholder="Kurze Inhaltsbeschreibung..."
+              rows="6"
+            ></textarea>
+          </label>
+        </p>
+
+        <p>
+          <label for="pccategories">
+            Kategorien:<br />
+            <select id="pccategories" name="pccategories" multiple>
+              <option value="KI">Künstliche Intelligenz</option>
+              <option value="Islam">Der Islam</option>
+              <option value="Wissenschaft">Wissenschaft</option>
+            </select>
+          </label>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Verantwortliche Personen</legend>
+
+        <p>
+          <label for="pcauthors">
+            Autor*innen (kommagetrennt):
+            <input
+              type="text"
+              id="pcauthors"
+              name="pcauthors"
+              pattern="[^,]+(,[^,]+)*[^,]"
+              placeholder="z.B. Max Mustermann"
+            />
+          </label>
+        </p>
+
+        <p>
+          <label class="required" for="pcownername">
+            Besitzer*in – Name:
+            <input
+              type="text"
+              id="pcownername"
+              name="pcownername"
+              placeholder="z.B. Tim Wellmann"
+              required
+            />
+          </label>
+        </p>
+
+        <p>
+          <label class="required" for="pcowneremail">
+            Besitzer*in – E-Mail:
+            <input
+              type="email"
+              id="pcowneremail"
+              name="pcowneremail"
+              placeholder="name@example.com"
+              required
+            />
+          </label>
+        </p>
+      </fieldset>
+
+     <fieldset>
+  <legend>Letztes Update</legend>
+
+  <div class="datetime-row">
+    <label class="required" for="pclastupdatedate">
+      Datum:
+      <input
+        type="date"
+        id="pclastupdatedate"
+        name="pclastupdatedate"
+        required
+        min="2000-01-01"
+      />
+    </label>
+
+    <label class="required" for="pclastupdatetime">
+      Uhrzeit:
+      <input
+        type="time"
+        id="pclastupdatetime"
+        name="pclastupdatetime"
+        required
+      />
+    </label>
+  </div>
+</fieldset>
+
+      <p>
+        <input type="submit" value="Podcast speichern" />
+      </p>
+    </form>
+  </main>
+</div>
+
+<footer>
+  <small>
+    Podcast-Cover: Fanjan —
+    <a href="https://thmanyah.com/podcasts/fnjan" target="_blank">
+      Quelle: Thmanyah
+    </a>
+    | Fahim —
+    <a
+      href="https://podcasts.apple.com/gb/podcast/%D9%81%D8%A7%D9%87%D9%85/id1657745574"
+      target="_blank"
+    >
+      Quelle: Fahim Podcast
+    </a>
+    — nur für Lern- und Projektzwecke verwendet.
+  </small>
+</footer>

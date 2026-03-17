@@ -1,1 +1,549 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(249, 216, 193);
+  color: #2f2f2f;
+  line-height: 1.5;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  color: rgba(135, 65, 8, 0.854);
+  margin-top: 0;
+}
+
+h1::first-letter,
+h2::first-letter,
+h3::first-letter {
+  color: rgba(255, 157, 0, 0.913);
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: #d35400;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 32px 18px;
+}
+
+#logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+}
+
+h1 {
+  position: static;
+  width: auto;
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.1;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+nav {
+  background: transparent;
+  padding: 0;
+}
+
+nav.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(222, 222, 222);
+  padding: 12px 18px;
+  gap: 12px;
+}
+
+nav.nav > a,
+nav.nav .dropbtn {
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  background-color: #a47a5e;
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+nav.nav > a:hover,
+nav.nav .dropbtn:hover {
+  background-color: #d08d61;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+nav.nav > a:focus,
+nav.nav .dropbtn:focus {
+  outline: none;
+  background-color: hsl(24, 46%, 56%);
+}
+
+nav.nav a.active {
+  box-shadow: inset 0 0 0 2px rgba(255, 157, 0, 0.7);
+}
+
+/* Dropdown */
+nav.nav .dropdown {
+  position: relative;
+}
+
+nav.nav .dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 260px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  z-index: 999;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+nav.nav .dropdown-content a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #2b2b2b;
+  text-decoration: none;
+  background: transparent;
+  transition: background-color 0.18s ease;
+}
+
+nav.nav .dropdown-content a:hover {
+  background: #f3f4f6;
+}
+
+nav.nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+#maincontainer {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+#maincontainer main {
+  width: 100%;
+}
+
+/* =========================
+   LINKS / MAIL
+========================= */
+[href^="mailto:"]::before {
+  content: "✉ ";
+  color: #f2a36f;
+  font-size: 1.1em;
+}
+
+/* =========================
+   ASIDE
+========================= */
+aside {
+  background-color: hsl(24, 100%, 89%);
+  padding: 14px;
+  margin-top: 8px;
+  margin-bottom: 2em;
+  border: 1px solid rgb(237, 227, 227);
+  border-radius: 10px;
+}
+
+aside h3 {
+  margin: 0 0 10px 0;
+}
+
+/* =========================
+   TABLE
+========================= */
+.episodenTable {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.episodenTable th,
+.episodenTable td {
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.episodenTable tr:nth-of-type(even) {
+  background-color: #f2f2f2;
+}
+
+.episodenTable thead {
+  background-color: slategrey;
+  color: white;
+}
+
+/* =========================
+   PODCAST LIST
+========================= */
+.podcast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.podcast-item {
+  margin-bottom: 0;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.podcast-item:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.podcast-link {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.podcast-cover {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.podcast-title {
+  margin: 0;
+  font-size: 1.05rem;
+  text-transform: none;
+}
+
+.podcast-meta {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+/* =========================
+   KACHEL-GRID
+========================= */
+.kachelcontainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kachel {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.kachel:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.kachel a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  gap: 10px;
+}
+
+.podcastbild {
+  width: 150px;
+  max-width: 150px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+/* =========================
+   EPISODEN
+========================= */
+.latest-episodes {
+  margin-bottom: 36px;
+}
+
+.latest-episodes h2 {
+  margin-bottom: 18px;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+  margin-top: 15px;
+}
+
+.episode-card {
+  display: block;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  text-decoration: none;
+  color: #222;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.episode-card:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.episode-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.episode-card p,
+.episode-title {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.episode-date {
+  font-size: 12px;
+  color: rgb(84, 44, 5);
+  margin: 6px 0 0;
+}
+
+.episode-podcast {
+  font-weight: bold;
+  margin: 4px 0;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+.about-portal {
+  background: #fff;
+  padding: 28px;
+  border-radius: 14px;
+  max-width: 1100px;
+  margin: 25px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  line-height: 1.7;
+}
+
+/* =========================
+   FORMS
+========================= */
+label,
+legend {
+  font-weight: bold;
+}
+
+form {
+  width: 100%;
+}
+
+fieldset {
+  border: 1px solid #d8d8d8;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  background: #ffffff;
+}
+
+legend {
+  padding: 0 10px;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 8px;
+  border: 1px solid #c7c7c7;
+  border-radius: 10px;
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #b68254;
+  box-shadow: 0 0 0 3px rgba(182, 130, 84, 0.18);
+}
+
+input[type="submit"],
+button,
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  background-color: #a47a5e;
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.btn:hover {
+  background-color: #d08d61;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.88rem;
+  color: #555;
+  background-color: rgba(222, 222, 222);
+  margin-top: 30px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  #maincontainer {
+    margin: 20px 16px;
+    padding: 22px;
+  }
+
+  .episode-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .kachelcontainer,
+  .podcast-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  nav.nav {
+    justify-content: flex-start;
+  }
+
+  #maincontainer {
+    padding: 18px;
+  }
+
+  .kachelcontainer,
+  .podcast-list,
+  .episode-list {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast-link {
+    align-items: flex-start;
+  }
+
+  .podcast-cover {
+    width: 68px;
+    height: 68px;
+  }
+
+  .episode-card img,
+  .podcastbild {
+    height: 180px;
+
+}
+}

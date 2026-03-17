@@ -1,0 +1,102 @@
+<header>
+  <img
+    id="logo"
+    src="assets/img/Taw Podcast.png"
+    width="100"
+    height="100"
+    alt="TAWAKKUL Logo"
+  />
+  <h1>TAWAKKUL – Für Herz & Seele</h1>
+</header>
+<nav class="nav">
+  <a routerLink="/podcasts">Abonnierte Podcasts</a>
+  <a routerLink="/podcast-grid">Abonnierte Podcasts (Kacheln)</a>
+  <a routerLink="/new-podcast">Podcast hinzufügen</a>
+  <a routerLink="/episode-detail">Details zur Episoden</a>
+</nav>
+<div id="maincontainer">
+  <main>
+    <form action="https://www.google.com/search" method="get">
+      <fieldset>
+        <legend>Podcast-Suche</legend>
+        <label class="required">
+          Titel:
+          <input name="q" maxlength="100" pattern="[A-Z].*" required />
+        </label>
+        <input type="submit" value="Finden" />
+      </fieldset>
+    </form>
+
+    <h2>Meine Podcasts</h2>
+
+    <ul class="kachelcontainer">
+      <li class="kachel" *ngFor="let podcast of podcasts">
+        <a href="#">
+          <img
+            class="podcastbild"
+            width="200"
+            height="200"
+            [src]="podcast.image"
+            [alt]="'Logo zum Podcast ' + podcast.title"
+          />
+        </a>
+      </li>
+    </ul>
+
+    <h2>Neueste Episoden</h2>
+
+   <div class="episode-list">
+      <a href="#" class="episode-card" *ngFor="let episode of latestEpisodes">
+        <img [src]="episode.image" [alt]="episode.podcast + ' Episode'" />
+        <p class="episode-date">{{ episode.date }}</p>
+        <p class="episode-podcast">{{ episode.podcast }}</p>
+        <p class="episode-title">{{ episode.title }}</p>
+      </a>
+    </div>
+
+    <section class="about-portal">
+      <h2>Über unser Podcast-Portal</h2>
+      <p>
+        TAWAKKUL – Für Herz & Seele ist ein Podcast-Portal für inspirierende
+        Inhalte rund um Glauben, persönliches Wachstum und gesellschaftliche
+        Themen. Hier findest du ausgewählte Podcasts, spannende Episoden und
+        wertvolle Impulse für den Alltag. Nutzer können Podcasts entdecken,
+        abonnieren und jederzeit anhören.
+      </p>
+
+      <h3>Podcasts entdecken und verstehen</h3>
+      <p>
+        Auf unserer Plattform findest du verschiedene Podcasts zu Themen wie
+        Spiritualität, persönliche Entwicklung, Gesellschaft und Wissen. Unsere
+        Inhalte helfen dir, neue Perspektiven zu gewinnen und dein Wissen zu
+        erweitern. Die übersichtlichen Kategorien ermöglichen einen schnellen
+        Zugang zu interessanten Episoden.
+      </p>
+
+      <h3>Wissen und Inspiration für den Alltag</h3>
+      <p>
+        Unsere Podcasts bieten wertvolle Einblicke in Lebensfragen, persönliche
+        Entwicklung und religiöse Werte. Die Episoden unterstützen dich dabei,
+        neue Denkweisen zu entwickeln und positive Veränderungen im Alltag
+        umzusetzen.
+      </p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <small>
+    Podcast-Cover: Fanjan —
+    <a href="https://thmanyah.com/podcasts/fnjan" target="_blank">
+      Quelle: Thmanyah
+    </a>
+    | Fahim —
+    <a
+      href="https://podcasts.apple.com/gb/podcast/%D9%81%D8%A7%D9%87%D9%85/id1657745574"
+      target="_blank"
+    >
+      Quelle: Fahim Podcast
+    </a>
+    — nur für Lern- und Projektzwecke verwendet.
+  </small>
+</footer>
