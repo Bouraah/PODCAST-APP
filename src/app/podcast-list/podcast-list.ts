@@ -24,7 +24,7 @@ export class PodcastList {
     {
       title: 'Empathy Podcast',
       episodes: 45,
-      image: 'assets/img/Empathy Podcast.png'
+      image: 'assets/img/Empathy Podacst.png'
     },
     {
       title: 'Muftatah Turuq',
