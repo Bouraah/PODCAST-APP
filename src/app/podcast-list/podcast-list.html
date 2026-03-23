@@ -8,12 +8,13 @@
   />
   <h1>TAWAKKUL – Für Herz & Seele</h1>
 </header>
+
 <nav class="nav">
   <a routerLink="/podcasts">Abonnierte Podcasts</a>
   <a routerLink="/podcast-grid">Abonnierte Podcasts (Kacheln)</a>
   <a routerLink="/new-podcast">Podcast hinzufügen</a>
-  <a routerLink="/episode-detail">Details zur Episoden</a>
 </nav>
+
 <div id="maincontainer">
   <main>
     <form action="https://www.google.com/search" method="get">
@@ -31,7 +32,7 @@
 
     <ul class="podcast-list">
       <li class="podcast-item" *ngFor="let podcast of podcasts">
-        <a class="podcast-link" href="#">
+        <a class="podcast-link" [routerLink]="['/episode-detail', podcast.title]">
           <img
             class="podcast-cover"
             [src]="podcast.image"
@@ -48,7 +49,7 @@
     <h2>Neueste Episoden</h2>
 
     <div class="episode-list">
-      <a href="#" class="episode-card" *ngFor="let episode of latestEpisodes">
+      <a class="episode-card" *ngFor="let episode of latestEpisodes">
         <img [src]="episode.image" [alt]="episode.podcast + ' Episode'" />
         <p class="episode-date">{{ episode.date }}</p>
         <p class="episode-podcast">{{ episode.podcast }}</p>

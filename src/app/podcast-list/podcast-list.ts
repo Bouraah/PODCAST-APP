@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core'; //Komponenten
+import { CommonModule } from '@angular/common';  //*ngFor
+import { RouterLink } from '@angular/router'; //Router
 
 @Component({
   selector: 'app-podcast-list',
