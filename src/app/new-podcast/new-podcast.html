@@ -1,4 +1,3 @@
-
 <header>
   <img
     id="logo"
@@ -14,17 +13,13 @@
   <a routerLink="/podcasts">Abonnierte Podcasts</a>
   <a routerLink="/podcast-grid">Abonnierte Podcasts (Kacheln)</a>
   <a routerLink="/new-podcast">Podcast hinzufügen</a>
-
 </nav>
 
 <div id="maincontainer">
   <main>
     <h2>Neuen Podcast hinzufügen</h2>
 
-    <form
-      method="post"
-      action="https://edu.inf.fh-dortmund.de/podcastService/testCreatePodcast.php"
-    >
+    <form (ngSubmit)="addPodcast()">
       <fieldset>
         <legend>Podcast-Informationen</legend>
 
@@ -34,10 +29,11 @@
             <input
               type="text"
               id="pctitle"
-              name="pctitle"
+              name="title"
               maxlength="100"
               pattern="[A-Z].*"
               placeholder="z.B. Ajras"
+              [(ngModel)]="title"
               required
             />
           </label>
@@ -48,10 +44,11 @@
             Beschreibung:<br />
             <textarea
               id="pcdescription"
-              name="pcdescription"
+              name="description"
               maxlength="500"
               placeholder="Kurze Inhaltsbeschreibung..."
               rows="6"
+              [(ngModel)]="description"
             ></textarea>
           </label>
         </p>
@@ -59,7 +56,11 @@
         <p>
           <label for="pccategories">
             Kategorien:<br />
-            <select id="pccategories" name="pccategories" multiple>
+            <select
+              id="pccategories"
+              name="category"
+              [(ngModel)]="category"
+            >
               <option value="KI">Künstliche Intelligenz</option>
               <option value="Islam">Der Islam</option>
               <option value="Wissenschaft">Wissenschaft</option>
@@ -73,13 +74,13 @@
 
         <p>
           <label for="pcauthors">
-            Autor*innen (kommagetrennt):
+            Autor*innen:
             <input
               type="text"
               id="pcauthors"
-              name="pcauthors"
-              pattern="[^,]+(,[^,]+)*[^,]"
+              name="authors"
               placeholder="z.B. Max Mustermann"
+              [(ngModel)]="authors"
             />
           </label>
         </p>
@@ -90,8 +91,9 @@
             <input
               type="text"
               id="pcownername"
-              name="pcownername"
+              name="ownerName"
               placeholder="z.B. Tim Wellmann"
+              [(ngModel)]="ownerName"
               required
             />
           </label>
@@ -103,40 +105,43 @@
             <input
               type="email"
               id="pcowneremail"
-              name="pcowneremail"
+              name="ownerEmail"
               placeholder="name@example.com"
+              [(ngModel)]="ownerEmail"
               required
             />
           </label>
         </p>
       </fieldset>
 
-     <fieldset>
-  <legend>Letztes Update</legend>
+      <fieldset>
+        <legend>Letztes Update</legend>
 
-  <div class="datetime-row">
-    <label class="required" for="pclastupdatedate">
-      Datum:
-      <input
-        type="date"
-        id="pclastupdatedate"
-        name="pclastupdatedate"
-        required
-        min="2000-01-01"
-      />
-    </label>
+        <div class="datetime-row">
+          <label class="required" for="pclastupdatedate">
+            Datum:
+            <input
+              type="date"
+              id="pclastupdatedate"
+              name="lastUpdateDate"
+              [(ngModel)]="lastUpdateDate"
+              required
+              min="2000-01-01"
+            />
+          </label>
 
-    <label class="required" for="pclastupdatetime">
-      Uhrzeit:
-      <input
-        type="time"
-        id="pclastupdatetime"
-        name="pclastupdatetime"
-        required
-      />
-    </label>
-  </div>
-</fieldset>
+          <label class="required" for="pclastupdatetime">
+            Uhrzeit:
+            <input
+              type="time"
+              id="pclastupdatetime"
+              name="lastUpdateTime"
+              [(ngModel)]="lastUpdateTime"
+              required
+            />
+          </label>
+        </div>
+      </fieldset>
 
       <p>
         <input type="submit" value="Podcast speichern" />

@@ -17,20 +17,25 @@
 
 <div id="maincontainer">
   <main>
-    <form action="https://www.google.com/search" method="get">
+    <form>
       <fieldset>
         <legend>Podcast-Suche</legend>
         <label class="required">
           Titel:
-          <input name="q" maxlength="100" pattern="[A-Z].*" required />
+          <input
+            type="text"
+            name="search"
+            [(ngModel)]="suchItem"
+            (input)="search(suchItem)"
+            placeholder="Podcast suchen"
+          />
         </label>
-        <input type="submit" value="Finden" />
       </fieldset>
     </form>
 
     <h2>Meine Podcasts</h2>
 
-    <ul class="podcast-list">
+    <ul class="podcast-list" *ngIf="podcasts.length > 0">
       <li class="podcast-item" *ngFor="let podcast of podcasts">
         <a class="podcast-link" [routerLink]="['/episode-detail', podcast.title]">
           <img
@@ -45,6 +50,15 @@
         </a>
       </li>
     </ul>
+
+    <div *ngIf="keinErgebnis" class="kein-ergebnis-box">
+      <p>
+        Kein passender Podcast gefunden für
+        <strong>"{{ suchItem }}"</strong>.
+      </p>
+      <p>Möchtest du ihn als neuen Podcast hinzufügen?</p>
+      <a routerLink="/new-podcast">Neuen Podcast hinzufügen</a>
+    </div>
 
     <h2>Neueste Episoden</h2>
 

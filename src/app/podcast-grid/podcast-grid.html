@@ -17,20 +17,26 @@
 
 <div id="maincontainer">
   <main>
-    <form action="https://www.google.com/search" method="get">
+    <form>
       <fieldset>
         <legend>Podcast-Suche</legend>
+
         <label class="required">
           Titel:
-          <input name="q" maxlength="100" pattern="[A-Z].*" required />
+          <input
+            type="text"
+            name="search"
+            [(ngModel)]="suchItem"
+            (input)="search(suchItem)"
+            placeholder="Podcast suchen"
+          />
         </label>
-        <input type="submit" value="Finden" />
       </fieldset>
     </form>
 
     <h2>Meine Podcasts</h2>
 
-    <ul class="kachelcontainer">
+    <ul class="kachelcontainer" *ngIf="podcasts.length > 0">
       <li class="kachel" *ngFor="let podcast of podcasts">
         <a [routerLink]="['/episode-detail', podcast.title]">
           <img
@@ -40,9 +46,19 @@
             [src]="podcast.image"
             [alt]="'Logo zum Podcast ' + podcast.title"
           />
+          <p>{{ podcast.title }}</p>
         </a>
       </li>
     </ul>
+
+    <div *ngIf="keinErgebnis" class="kein-ergebnis-box">
+      <p>
+        Kein passender Podcast gefunden für
+        <strong>"{{ suchItem }}"</strong>.
+      </p>
+      <p>Möchtest du ihn als neuen Podcast hinzufügen?</p>
+      <a routerLink="/new-podcast">Neuen Podcast hinzufügen</a>
+    </div>
 
     <h2>Neueste Episoden</h2>
 
@@ -61,17 +77,13 @@
         TAWAKKUL – Für Herz & Seele ist ein Podcast-Portal für inspirierende
         Inhalte rund um Glauben, persönliches Wachstum und gesellschaftliche
         Themen. Hier findest du ausgewählte Podcasts, spannende Episoden und
-        wertvolle Impulse für den Alltag. Nutzer können Podcasts entdecken,
-        abonnieren und jederzeit anhören.
+        wertvolle Impulse für den Alltag.
       </p>
 
       <h3>Podcasts entdecken und verstehen</h3>
       <p>
         Auf unserer Plattform findest du verschiedene Podcasts zu Themen wie
-        Spiritualität, persönliche Entwicklung, Gesellschaft und Wissen. Unsere
-        Inhalte helfen dir, neue Perspektiven zu gewinnen und dein Wissen zu
-        erweitern. Die übersichtlichen Kategorien ermöglichen einen schnellen
-        Zugang zu interessanten Episoden.
+        Spiritualität, persönliche Entwicklung, Gesellschaft und Wissen.
       </p>
 
       <h3>Wissen und Inspiration für den Alltag</h3>
